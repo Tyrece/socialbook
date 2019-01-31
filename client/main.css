@@ -2,3 +2,12 @@ body {
   padding: 10px;
   font-family: sans-serif;
 }
+.prof{
+	width: 100%;
+}
+
+.rounded mx-auto d-block{
+	
+  	height: 50%;
+
+}
