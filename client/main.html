@@ -6,34 +6,43 @@
   <div class="container">
     <h1 class = "display1" align = "center" >Social Book</h1>
     {{>addprofile}}
-    {{> profile}}
+    <div class="row justify-content-around">
+        {{> profile}}
+    </div>
     
   </div>
 </body>
 
 <template name="profile">
+  {{#each profAll}}
+  <div id = {{_id}} class="col-4">
+    <div class="row">
+      <div class="col_1">
+        <i  class="zmdi zmdi-delete zmdi-hc-2x js-delete"></i>
+      </div>
+    </div>
   <div class="row justify-content-around">
-      <div class="col-sm-4">
-        <img class="rounded mx-auto d-block prof" align = "center" src="v.jpg" alt="">
+      <div class="col-sm-6">
+        <img class="rounded mx-auto d-block prof" align = "center" src="{{Profilepic}}" alt="">
       </div>
     </div>
     <div class="row justify-content-around">
       <div class="col-sm-4">
-        <h1 class="display-4">Tyrece</h1>
+        <h1 class="display-4">{{profFname}}</h1>
       </div>
     </div>
-    <div class="row justify-content-around">
-      <div class="col-sm-4">
-        <div class="row justify-content between">
-          <div class="col-sm-4">
+    
+        <div class="row justify-content between" >
+          <div class="col-sm-4" align = "center">
             <button class="btn btn-primary js-like" >like</button>
           </div>
           <div class="col-sm-4">
-            <button class="btn btn-danger js-dis">Dislike</button>
+            <button class="btn btn-danger js-dis" >Dislike</button>
           </div>
         </div>
-      </div>
-    </div>
+      
+  </div>
+  {{/each}}
 </template>
 
 
