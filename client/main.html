@@ -28,16 +28,26 @@
     </div>
     <div class="row justify-content-around">
       <div class="col-sm-4">
-        <h1 class="display-4">{{profFname}}</h1>
+        <h1 class="display-4">{{firstName}}</h1>
+      </div>
+    </div>
+    <div class="row justify-content-around">
+      <div class="col-sm-4">
+        <h1 class="display-4">{{lastName}}</h1>
       </div>
     </div>
     
         <div class="row justify-content between" >
+
           <div class="col-sm-4" align = "center">
+            {{like}}
             <button class="btn btn-primary js-like" >like</button>
+            
           </div>
           <div class="col-sm-4">
-            <button class="btn btn-danger js-dis" >Dislike</button>
+            {{dislike}}
+            <button class="btn btn-danger js-dis" data-target="#Dislike" >Dislike</button>
+            
           </div>
         </div>
       
