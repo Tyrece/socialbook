@@ -1,7 +1,6 @@
 <head>
   <title>socialbook</title>
 </head>
-
 <body>
   <div class="container">
     <h1 class = "display1" align = "center" >Social Book</h1>
@@ -12,7 +11,6 @@
     
   </div>
 </body>
-
 <template name="profile">
   {{#each profAll}}
   <div id = {{_id}} class="col-4">
@@ -28,6 +26,7 @@
     </div>
     <div class="row justify-content-around">
       <div class="col-sm-4">
+        <h1 class="display-4">{{profFname}}</h1>
         <h1 class="display-4">{{firstName}}</h1>
       </div>
     </div>
@@ -36,26 +35,25 @@
         <h1 class="display-4">{{lastName}}</h1>
       </div>
     </div>
-    
+
         <div class="row justify-content between" >
 
           <div class="col-sm-4" align = "center">
             {{like}}
             <button class="btn btn-primary js-like" >like</button>
-            
+
           </div>
           <div class="col-sm-4">
+           
             {{dislike}}
             <button class="btn btn-danger js-dis" data-target="#Dislike" >Dislike</button>
-            
+
           </div>
         </div>
-      
+
   </div>
   {{/each}}
 </template>
-
-
 <template name="addprofile">
   <!-- Button trigger modal -->
   
@@ -63,8 +61,6 @@
   Add Profile
 </button>
       
-
-
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -94,7 +90,6 @@
         </div>
         <input type="text" name="Profilepic" class="form-control" placeholder="kool.png" aria-label="ProfileImage" aria-describedby="basic-addon1">
       </div>
-
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-success js-cancel" data-dismiss="modal">Cancel</button>
