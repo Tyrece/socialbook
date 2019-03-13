@@ -1,66 +1,65 @@
 import { Template } from 'meteor/templating';
 import { ReactiveVar } from 'meteor/reactive-var';
+
 import './main.html';
-import '../lib/Collections.js';
-Template.profile.helpers({
+import '../libCollections.js';
+
+Template.profiles.helpers({
   profAll(){
     return userDB.find({});
   }
 });
-Template.profile.events({
-  'click .js-like'(event, instance) {
-    alert("you clicked like")
+
+Template.profiles.events({
+  'click .js-like'(event, instance) { 
     var profID = this._id;
-    var numLikes = userDB.findOne({_id: profID}).like;
-    if (!numLikes){
+    var numLikes = userDB.findOne({_id:  profID}).like;
+    if (!numLikes) {
       numLikes = 0;
     }
-    console.log("you have",numLikes);
-    userDB.update({_id:profID}, {$set:{'like':numLikes + 1}});
+    numLikes = numLikes + 1;  
+    userDB.update({_id:profID}, {$set:{'like': numLikes}});
   },
-  'click .js-dis'(event, instance) {
-    alert("you clicked dislike")
+  'click .js-dislike'(event, instance){
     var profID = this._id;
-    var numLikes = userDB.findOne({_id: profID}).dislike;
-    if (!numLikes){
-      numLikes = 0;
-   }
-      console.log("you have",numLikes);
-    userDB.update({_id:profID}, {$set:{'dislike':numLikes + 1}});
+    var numDisLikes = userDB.findOne({_id:  profID}).dislike;
+    if (!numDisLikes) {
+      numDisLikes = 0;
+    }
+    numDisLikes = numDisLikes + 1;  
+    userDB.update({_id:profID}, {$set:{'dislike': numDisLikes}});
   },
-
-
-   'click .js-delete' (event, instance){
-    console.log(this._id);
+  'click .js-delete'(event, instance){
+    // console.log(this._id);
     var profID = this._id;
-    $("#" + this._id).fadeOut("slow","swing",function () {
-    userDB.remove({_id: this._id});
-  });
-
+    $("#" + profID).fadeOut("slow", "swing", function () {
+      userDB.remove({_id: profID});
+    });   
+  },
+  'click .viewUser'(event, instance){
+    var uId = this._id;
+    $('#userId').val(uId);
+    $('#viewUserProfile img').attr('src',userDB.findOne({_id:uId}).img);
   }
-
 });
-
-
 
 Template.addprofile.events({
   'click .js-add'(event, instance){
   var fName = $("#exampleModal input[name='firstName']").val();
+  console.log("The First Name is",fName);
+
   var lName = $("#exampleModal input[name='lastName']").val();
+  console.log("The Last Name is",lName);
+
   var Ppic = $("#exampleModal input[name='Profilepic']").val();
-  if (Ppic == ""){
-    Ppic="v.jpg";
-  }
-  //console.log("The Profile Picture is",Ppic);
   console.log("The Profile Picture is",Ppic);
-  console.log("The Profile firstName is",fName);
-  console.log("The Profile lastName is",lName);
 
    $("#exampleModal input[name='firstName']").val('');
    $("#exampleModal input[name='lastName']").val('');
    $("#exampleModal input[name='Profilepic']").val('');
-   
+
     $("#exampleModal").modal("hide");
-    userDB.insert({'firstName':fName, 'lastName': lName, 'Profilepic': Ppic});
+
   },
+
 })

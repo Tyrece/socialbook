@@ -1,66 +1,69 @@
 <head>
-  <title>socialbook</title>
+  <title>SocialBook</title>
 </head>
+
 <body>
   <div class="container">
-    <h1 class = "display1" align = "center" >Social Book</h1>
-    {{>addprofile}}
     <div class="row justify-content-around">
-        {{> profile}}
+      <div class="col-sm-8 text-center">
+        <h1 class="display-1">Social Book</h1>
+      </div>
     </div>
-    
-  </div>
+    {{> addProfile}}
+    <div class="row justify-content-around">
+      {{> profiles}}    
+    </div>
+    {{> editUser}}
+  </div>  
 </body>
-<template name="profile">
+
+<template name="profiles">
   {{#each profAll}}
-  <div id = {{_id}} class="col-4">
-    <div class="row">
-      <div class="col_1">
-        <i  class="zmdi zmdi-delete zmdi-hc-2x js-delete"></i>
-      </div>
-    </div>
-  <div class="row justify-content-around">
-      <div class="col-sm-6">
-        <img class="rounded mx-auto d-block prof" align = "center" src="{{Profilepic}}" alt="">
-      </div>
-    </div>
+    <div id={{_id}} class="col-4"> <!-- beginnig of profile col -->
+     <div class="row justify-content-end">
+        <div class="col-1">
+          <i class="zmdi zmdi-hc-2x zmdi-delete js-delete"></i>
+        </div>
+      </div> 
+    <a class="viewUser" data-toggle="modal" data-target="#editUserModal">
+      <div class="row justify-content-around">
+        <div class="col-sm-12 text-center">
+          <img class="profPic" src="{{img}}" alt="">
+        </div>
+      </div> <!-- / profile picture -->
+      <div class="row justify-content-around">
+        <div class="col-sm-10 text-center">
+          <h1 class="display-5">{{firstName}}&nbsp;{{lastName}}</h1>
+        </div>
+      </div> <!-- / profile name -->
+    </a>
     <div class="row justify-content-around">
-      <div class="col-sm-4">
-        <h1 class="display-4">{{profFname}}</h1>
-        <h1 class="display-4">{{firstName}}</h1>
-      </div>
-    </div>
-    <div class="row justify-content-around">
-      <div class="col-sm-4">
-        <h1 class="display-4">{{lastName}}</h1>
-      </div>
-    </div>
-
-        <div class="row justify-content between" >
-
-          <div class="col-sm-4" align = "center">
-            {{like}}
-            <button class="btn btn-primary js-like" >like</button>
-
+      <div class="col-sm-7">
+        <div class="row justify-content-between">
+          <div class="col-sm-5 text-center">            
+            <button class="btn btn-primary js-like">Like</button>
+            <h1 class="rateMe">{{like}}</h1>
           </div>
-          <div class="col-sm-4">
-           
-            {{dislike}}
-            <button class="btn btn-danger js-dis" data-target="#Dislike" >Dislike</button>
-
+          <div class="col-sm-5 text-center">
+            <button class="btn btn-danger js-dislike">Dislike</button>
+            <h1 class="rateMe">{{dislike}}</h1>
           </div>
         </div>
-
-  </div>
+      </div>
+    </div> <!-- / mood buttons -->
+    </div>
   {{/each}}
 </template>
+
 <template name="addprofile">
   <!-- Button trigger modal -->
-  
+
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
   Add Profile
 </button>
-      
+
+
+
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -90,10 +93,35 @@
         </div>
         <input type="text" name="Profilepic" class="form-control" placeholder="kool.png" aria-label="ProfileImage" aria-describedby="basic-addon1">
       </div>
+
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-success js-cancel" data-dismiss="modal">Cancel</button>
         <button type="button" class="btn btn-info js-add">Add</button>
+      </div>
+    </div>
+  </div>
+</div>
+</template> 
+
+<template name="editUser">
+<!-- Modal -->
+<div class="modal fade" id="editUserModal" tabindex="-1" role="dialog" aria-labelledby="editUserModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="editUserModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" id="viewUserProfile">
+        <input id="userId" type="hidden">
+        <img class="profPic" src="user-512.png" alt="">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
       </div>
     </div>
   </div>
