@@ -2,7 +2,7 @@ import { Template } from 'meteor/templating';
 import { ReactiveVar } from 'meteor/reactive-var';
 
 import './main.html';
-import '../libCollections.js';
+import '../lib/Collections.js';
 
 Template.profiles.helpers({
   profAll(){
@@ -43,19 +43,19 @@ Template.profiles.events({
   }
 });
 
-Template.addprofile.events({
+Template.addProfile.events({
   'click .js-add'(event, instance){
-  var fName = $("#exampleModal input[name='firstName']").val();
+  var fName = $("#exampleModal input[name='FirstName']").val();
   console.log("The First Name is",fName);
 
-  var lName = $("#exampleModal input[name='lastName']").val();
+  var lName = $("#exampleModal input[name='LastName']").val();
   console.log("The Last Name is",lName);
 
   var Ppic = $("#exampleModal input[name='Profilepic']").val();
   console.log("The Profile Picture is",Ppic);
 
-   $("#exampleModal input[name='firstName']").val('');
-   $("#exampleModal input[name='lastName']").val('');
+   $("#exampleModal input[name='FirstName']").val('');
+   $("#exampleModal input[name='LastName']").val('');
    $("#exampleModal input[name='Profilepic']").val('');
 
     $("#exampleModal").modal("hide");

@@ -19,23 +19,23 @@
 
 <template name="profiles">
   {{#each profAll}}
-    <div id={{_id}} class="col-4"> <!-- beginnig of profile col -->
-     <div class="row justify-content-end">
-        <div class="col-1">
-          <i class="zmdi zmdi-hc-2x zmdi-delete js-delete"></i>
-        </div>
-      </div> 
+    <div id={{_id}} class="col-4"> 
+     
+
+
+
+
     <a class="viewUser" data-toggle="modal" data-target="#editUserModal">
       <div class="row justify-content-around">
         <div class="col-sm-12 text-center">
           <img class="profPic" src="{{img}}" alt="">
         </div>
-      </div> <!-- / profile picture -->
+      </div> 
       <div class="row justify-content-around">
         <div class="col-sm-10 text-center">
           <h1 class="display-5">{{firstName}}&nbsp;{{lastName}}</h1>
         </div>
-      </div> <!-- / profile name -->
+      </div> 
     </a>
     <div class="row justify-content-around">
       <div class="col-sm-7">
@@ -50,12 +50,12 @@
           </div>
         </div>
       </div>
-    </div> <!-- / mood buttons -->
+    </div> 
     </div>
   {{/each}}
 </template>
 
-<template name="addprofile">
+<template name="addProfile">
   <!-- Button trigger modal -->
 
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
@@ -79,25 +79,25 @@
         <div class="input-group-prepend">
         <span class="input-group-text" id="basic-addon1">First Name</span>
         </div>
-        <input type="text" name="firstName" class="form-control" placeholder="John" aria-label="FirstName" aria-describedby="basic-addon1">
+        <input type="text" name="FirstName" class="form-control" placeholder="John" aria-label="FirstName" aria-describedby="basic-addon1">
       </div>
       <div class="input-group mb-3">
         <div class="input-group-prepend">
         <span class="input-group-text" id="basic-addon1">Last Name</span>
         </div>
-        <input type="text" name="lastName" class="form-control" placeholder="Brown" aria-label="LastName" aria-describedby="basic-addon1">
+        <input type="text" name="LastName" class="form-control" placeholder="Brown" aria-label="LastName" aria-describedby="basic-addon1">
       </div>
       <div class="input-group mb-3">
         <div class="input-group-prepend">
         <span class="input-group-text" id="basic-addon1">Profile Image</span>
         </div>
-        <input type="text" name="Profilepic" class="form-control" placeholder="kool.png" aria-label="ProfileImage" aria-describedby="basic-addon1">
+        <input type="text" name="Profilepic" class="form-control" placeholder="kool.png" aria-label="Profilepic" aria-describedby="basic-addon1">
       </div>
 
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-success js-cancel" data-dismiss="modal">Cancel</button>
-        <button type="button" class="btn btn-info js-add">Add</button>
+        <button type="button" class="btn btn-info js-add" >Add</button>
       </div>
     </div>
   </div>
@@ -105,7 +105,7 @@
 </template> 
 
 <template name="editUser">
-<!-- Modal -->
+
 <div class="modal fade" id="editUserModal" tabindex="-1" role="dialog" aria-labelledby="editUserModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -117,7 +117,7 @@
       </div>
       <div class="modal-body" id="viewUserProfile">
         <input id="userId" type="hidden">
-        <img class="profPic" src="user-512.png" alt="">
+        <img class="profPic" src="user-512.png" alt ="">
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
