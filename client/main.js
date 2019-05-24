@@ -44,22 +44,20 @@ Template.profiles.events({
 });
 
 Template.addProfile.events({
-  'click .js-add'(event, instance){
-  var fName = $("#exampleModal input[name='FirstName']").val();
-  console.log("The First Name is",fName);
-
-  var lName = $("#exampleModal input[name='LastName']").val();
-  console.log("The Last Name is",lName);
-
-  var Ppic = $("#exampleModal input[name='Profilepic']").val();
-  console.log("The Profile Picture is",Ppic);
-
-   $("#exampleModal input[name='FirstName']").val('');
-   $("#exampleModal input[name='LastName']").val('');
-   $("#exampleModal input[name='Profilepic']").val('');
-
-    $("#exampleModal").modal("hide");
-
-  },
-
+ 'click .js-saveProfile'(event, instance){
+    // get user data
+    var fName = $("#addUserModal input[name='firstName']").val();
+    var lName = $("#addUserModal input[name='lastName']").val();
+    var image = $("#addUserModal input[name='image']").val();
+    if (image == ""){
+      image="v.jpg";
+    }
+    // Reset the form
+    $("#addUserModal input[name='firstName']").val('');
+    $("#addUserModal input[name='lastName']").val('');
+    $("#addUserModal input[name='image']").val('');
+    // Close the modal
+    $("#addUserModal").modal("hide");
+    userDB.insert({'firstName':fName, 'lastName':lName, 'img':image});
+  }
 })
